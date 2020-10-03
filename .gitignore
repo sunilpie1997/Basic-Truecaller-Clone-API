@@ -1,0 +1,15 @@
+accounts/__pycache__
+accounts/api/__pycache__
+accounts/__pycache__
+search_user/__pycache__
+search_user/api/__pycache__
+caller_project/settings/__pycache__
+caller_project/__pycache__
+accounts/migrations/__pycache__
+accounts/migrations/000*
+search_user/migrations/__pycache__
+search_user/migrations/000*
+
+search_user/management/commands/__pycache__/dummy_contacts.cpython-38.pyc
+search_user/management/commands/__pycache__/add_to_spam.cpython-38.pyc
+accounts/management/commands/__pycache__/dummy_user.cpython-38.pyc

@@ -1,0 +1,11 @@
+django
+django-environ
+psycopg2
+psycopg2-binary
+dj-database-url
+djangorestframework
+djangorestframework-simplejwt 
+markdown
+django-filter
+django-cors-headers
+pillow
