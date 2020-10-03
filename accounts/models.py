@@ -37,26 +37,15 @@ class  User(AbstractUser):
     username=models.CharField(max_length=20,null=False,validators=[isPhoneNumberValid],blank=False,unique=True,db_index=True)
     email=models.EmailField(max_length=100,blank=True,null=True)
     first_name=models.CharField(max_length=100,blank=False,null=False)
-    middle_name=models.CharField(max_length=100,default="",blank=True)
     last_name=models.CharField(max_length=100,default="",blank=True)
     #last_name wiil be automatically added 'blank=True,null=True,max_length>=100'
 
-
-    def setMiddleName(self,middle_name):
-        if (isinstance(middle_name,str) and validateNameLength(middle_name)) or middle_name is None:
-            self.middle_name=middle_name
-        else:
-            raise TypeError('{name} should be a {typeOf} ({length} chars)'.format(name="middle_name",length=100,typeOf="string"))
 
     def setLastName(self,last_name):
         if isinstance(last_name,str) and validateNameLength(last_name):
             self.last_name=last_name
         else:
             raise TypeError('{name} should be a {typeOf} ({length} chars)'.format(name="last_name",length=100,typeOf="string"))
-
-
-    def getMiddleName(self):
-        return self.middle_name
 
 
     def getLastName(self):

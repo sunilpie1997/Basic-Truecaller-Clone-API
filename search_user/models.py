@@ -10,7 +10,7 @@ import re
 """
 #check if 'name' entered by user for search in global database is valid
 def isNameValid(name):
-    if isinstance(name,str) and len(name)<=50:
+    if isinstance(name,str) and len(name)<=20:
         return True
     else:
         return False

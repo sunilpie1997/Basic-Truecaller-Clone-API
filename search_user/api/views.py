@@ -80,3 +80,27 @@ class SearchUserByPhoneView(APIView):
 
             else:
                 return Response(data={"detail":"enter valid phone number"},status=status.HTTP_400_BAD_REQUEST)
+
+
+"""
+#search user by name
+class SearchUserByNameView(APIView):
+
+    permission_classes=[IsAuthenticated]
+
+    def get(self,request,format=None):
+
+        first_name=request.data.get('first_name',None)
+        last_name=request.data.get('last_name',"")
+
+        if first_name is None:
+            return Response(data={"detail":"first_name is required"},status=status.HTTP_400_BAD_REQUEST)
+            
+        else:
+
+            if isNameValid(first_name) and isNameValid(last_name):
+                PhoneDirectory.objects.filter(name_list__="")
+
+            else:
+                return Response(data={"detail":"each name should be not more than 20 chars"},status=status.HTTP_400_BAD_REQUEST)
+"""

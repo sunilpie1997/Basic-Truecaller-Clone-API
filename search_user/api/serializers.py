@@ -8,14 +8,14 @@ class UserWithEmailSerializer(ModelSerializer):
 
     class Meta:
         model=User
-        fields=["first_name","middle_name","last_name","email"]
+        fields=["first_name","last_name","email"]
 
 
 class UserWithoutEmailSerializer(ModelSerializer):
 
     class Meta:
         model=User
-        fields=["first_name","middle_name","last_name"]
+        fields=["first_name","last_name"]
 
 
 #This serializer is used to serialize data (in case of unregistered phone numbers)
