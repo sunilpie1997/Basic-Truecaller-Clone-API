@@ -53,8 +53,19 @@ class PhoneDirectory(models.Model):
         return self.name_list
 
 
+    def does_user_exist(self):
+        if self.user is None:
+            return False
+        else:
+            return True
+
+
     def setUserNone(self):
         self.user=None
+
+
+    def getRegisteredUser(self):
+        return self.user
 
 
     def setUser(self,phone_user):
