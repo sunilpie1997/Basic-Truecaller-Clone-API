@@ -43,11 +43,10 @@ class  User(AbstractUser):
 
 
     def setMiddleName(self,middle_name):
-        if isinstance(middle_name,str) and validateNameLength(middle_name):
+        if (isinstance(middle_name,str) and validateNameLength(middle_name)) or middle_name is None:
             self.middle_name=middle_name
         else:
             raise TypeError('{name} should be a {typeOf} ({length} chars)'.format(name="middle_name",length=100,typeOf="string"))
-
 
     def setLastName(self,last_name):
         if isinstance(last_name,str) and validateNameLength(last_name):
