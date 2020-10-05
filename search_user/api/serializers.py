@@ -23,7 +23,7 @@ class UnknownNumberSerializer(ModelSerializer):
 
     class Meta:
         model=PhoneDirectory
-        fields=["name_list","spam_score"]
+        fields=["phone","name_list","spam_score"]
 
 
 class RegisteredNumberSerializer(ModelSerializer):
@@ -31,7 +31,7 @@ class RegisteredNumberSerializer(ModelSerializer):
     user=UserWithEmailSerializer()
     class Meta:
         model=PhoneDirectory
-        fields=["name_list","spam_score","user"]
+        fields=["phone","name_list","spam_score","user"]
 
 
 #if user searches for registered number,but he/she is not present in his/her contact_list
@@ -40,4 +40,19 @@ class RegisteredNumberByUnknown(ModelSerializer):
     user=UserWithoutEmailSerializer()
     class Meta:
         model=PhoneDirectory
-        fields=["name_list","spam_score","user"]
+        fields=["phone","name_list","spam_score","user"]
+
+    
+class CompleteUserSerializer(ModelSerializer):
+
+    class Meta:
+        model=User
+        fields=["first_name","last_name","email"]
+    
+
+class PhoneDirectorySerializer(ModelSerializer):
+
+    user=CompleteUserSerializer()
+    class Meta:
+        model=PhoneDirectory
+        fields=["phone","spam_score","name_list","user"]

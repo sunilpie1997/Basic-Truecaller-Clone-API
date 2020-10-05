@@ -34,6 +34,7 @@ def validateNameLength(value):
 
 #custom user model
 class  User(AbstractUser):
+    
     username=models.CharField(max_length=20,null=False,validators=[isPhoneNumberValid],blank=False,unique=True,db_index=True)
     email=models.EmailField(max_length=100,blank=True,null=True)
     first_name=models.CharField(max_length=100,blank=False,null=False)
@@ -101,6 +102,9 @@ def create_or_update_phone_directory(sender, instance, created, update_fields, *
 
     phoneObject,is_created=PhoneDirectory.objects.get_or_create(phone=instance.username)
     phoneObject.setUser(instance)
+    list_of_names=phoneObject.getNameList()
+    list_of_names.update({instance.getFirstName():instance.getFirstName()})
+
     phoneObject.save()
 
     if created:
@@ -116,7 +120,4 @@ def update_phone_directory(sender,instance,**kwargs):
     phoneObject,is_created=PhoneDirectory.objects.get_or_create(phone=instance.username)
     phoneObject.setUserNone()
 
-    list_of_names=phoneObject.getNameList()
-
-    list_of_names.update({instance.first_name:None})
     phoneObject.save()

@@ -7,14 +7,14 @@ import re
 
 
 
-"""
+
 #check if 'name' entered by user for search in global database is valid
 def isNameValid(name):
     if isinstance(name,str) and len(name)<=20:
         return True
     else:
         return False
-"""
+
 
 #for now,only Indian numbers are supported
 def isPhoneNumberValid(phone):
@@ -45,6 +45,10 @@ class PhoneDirectory(models.Model):
         self.spam_score=self.spam_score+1
 
 
+    def getPhoneNo(self):
+        return self.phone
+    
+    
     def getSpamScore(self):
         return self.spam_score
 

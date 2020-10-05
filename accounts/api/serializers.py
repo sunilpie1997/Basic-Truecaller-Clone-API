@@ -11,12 +11,13 @@ class UserCreateSerializer(ModelSerializer):
     username = RegexField(regex=r'^[1-9][0-9]{9}$',required=True,validators=[UniqueValidator(queryset=User.objects.all(),message="Account with this contact no already exists")])
     first_name = RegexField(required=True,regex=r'^\S{3,20}$')
     last_name=RegexField(required=False,regex=r'^\S{3,20}$')
-    password=RegexField(required=True,regex=r'^\S{8,50}$')
+    password=RegexField(required=True,regex=r'^\S{8,50}$',write_only=True)
     email=EmailField(required=False,max_length=50)
 
     class Meta:
         model=User
         fields=["username","first_name","last_name","password","email"]
+    
 
     """
     need to override create method to store password in hash form

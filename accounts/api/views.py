@@ -19,10 +19,11 @@ class UserRetrieveAPIView(RetrieveAPIView):
 
     queryset=User.objects.all()
     serializer_class=UserSerializer
+    #Before changing this,edit code below
     permission_classes=[IsAuthenticated]
     
     def get_object(self):
     
         queryset = self.filter_queryset(self.get_queryset())
-        obj = get_object_or_404(queryset,username=self.request.user.username)
+        obj = get_object_or_404(queryset,id=self.request.user.id)
         return obj
