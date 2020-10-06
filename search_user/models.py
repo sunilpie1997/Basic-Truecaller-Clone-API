@@ -11,7 +11,7 @@ import re
 #check if 'name' entered by user for search in global database is valid
 def isNameValid(name):
     if isinstance(name,str) and len(name)<=20:
-        if re.match('^[a-zA-Z]{3,20}$',name) is not None:
+        if re.match('^[a-zA-Z]{1,20}$',name) is not None:
             return True
         else:
             return False

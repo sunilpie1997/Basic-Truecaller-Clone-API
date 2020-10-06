@@ -107,7 +107,7 @@ class SearchUserByNameView(APIView):
                 if last_name is not None:
 
                     #filter by first_name and last_name
-                    list_of_users=(PhoneDirectory.objects.filter(name_list__icontains=first_name)|PhoneDirectory.objects.filter(name_list__icontains=last_name))[0:20].select_related('user')
+                    list_of_users=(PhoneDirectory.objects.filter(name_list__icontains=first_name) & PhoneDirectory.objects.filter(name_list__icontains=last_name))[0:20].select_related('user')
                 else:
                     #filter by first_name
                     list_of_users=PhoneDirectory.objects.filter(name_list__icontains=first_name)[0:20].select_related('user')
@@ -137,7 +137,7 @@ class SearchUserByNameView(APIView):
                     name_list=each.get("name_list")
                     for name in name_list:
                         #if last_name is not None ,regex match using both names
-                        if last_name is not None and re.match('[a-zA-Z]*('+first_name+')\s*[a-zA-Z]*('+last_name+')?[a-zA-Z]*',name) is not None:
+                        if last_name is not None and re.match('[a-zA-Z]*('+first_name+')\s*[a-zA-Z]*('+last_name+')[a-zA-Z]*',name) is not None:
                             li.append(name)
                         
                         #if last_name is None,regex match using only first_name
