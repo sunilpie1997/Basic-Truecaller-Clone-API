@@ -1,6 +1,6 @@
     Add phone Number To Spam List
 
-    url:http://localhost:8000/caller/add_to_spam?phone=<phone_no>/
+    url:http://localhost:8000/caller/add_to_spam?phone=9900000000   #POST
 
     NOTE:
 

@@ -9,7 +9,7 @@ urlpatterns=[
 
     path('',UserRetrieveAPIView.as_view(),name='get-user'),
 
-    path('create/',UserCreateAPIView.as_view(),name='create-user'),
+    path('create',UserCreateAPIView.as_view(),name='create-user'),
 
 ]
     

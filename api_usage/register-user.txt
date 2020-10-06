@@ -1,7 +1,7 @@
     User Registration:
 
-    url:http://localhost:8000/user/create/
-    
+    url:http://localhost:8000/user/create   #POST
+
     { 
         "username":<phone_no>,                  #REQUIRED   #10-digit phone numbers
         "password":<password>,                  #REQUIRED   #min:8, max:50
