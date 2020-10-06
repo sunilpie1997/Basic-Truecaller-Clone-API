@@ -20,7 +20,7 @@ class AddToSpamView(APIView):
     def post(self,request,format=None):
 
         
-        phone=request.data.get('phone',None)
+        phone=request.query_params.get('phone',None)
         if phone is None:
             return Response(data={"detail":"phone number is required"},status=status.HTTP_400_BAD_REQUEST)
 
@@ -56,7 +56,7 @@ class SearchUserByPhoneView(APIView):
     def get(self,request,format=None):
 
         phone=request.query_params.get('phone',None)
-        #if 'phone' is not present in request body
+        #if 'phone' is not present in request
         if phone is None:
             return Response(data={"detail":"phone number is required"},status=status.HTTP_400_BAD_REQUEST)
             

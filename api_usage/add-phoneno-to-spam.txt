@@ -1,0 +1,10 @@
+    Add phone Number To Spam List
+
+    url:http://localhost:8000/caller/add_to_spam?phone=<phone_no>/
+
+    NOTE:
+
+        Each user can add a particular phone_no to spam only once.
+        If he tries again,there is NO ERROR,but spam_score of 'phone_no' is NOT updated
+
+        Each user has a list of spam numbers in 'ContactList' model

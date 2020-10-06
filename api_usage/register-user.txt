@@ -1,10 +1,12 @@
     User Registration:
 
+    url:http://localhost:8000/user/create/
+    
     { 
         "username":<phone_no>,                  #REQUIRED   #10-digit phone numbers
         "password":<password>,                  #REQUIRED   #min:8, max:50
         "first_name":<first_name>,              #REQUIRED   #min:3, max:20, only alphabets
         "last_name":<last_name>,                #OPTIONAL   ,, (null is not allowed)
-        "email":<email>                         #OPTIONAL       (null is not allowed)
+        "email":<email>                         #OPTIONAL      (null is not allowed)
     
     }

@@ -1,0 +1,5 @@
+    Search user by phone no.
+
+    url:http://localhost:8000/caller/search_by_phone?phone=<phone_no>/
+
+    phone   #REQUIRED   10_digits_only_starting_from[1-9]

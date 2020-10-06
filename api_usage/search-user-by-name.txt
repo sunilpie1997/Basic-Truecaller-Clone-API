@@ -1,0 +1,6 @@
+    Search user by name
+
+    url:http://localhost:8000/caller/search_by_name?first_name=<...>&last_name=<...>/
+
+    first_name  #REQUIRED   max_length=20,only_alphabets
+    last_name   #OPTIONAL   max_length=20,only_alphabets
