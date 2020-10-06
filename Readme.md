@@ -1,5 +1,7 @@
     Caller project
 
+    ********** clean first_bame and alst_name to include only alpabets********8
+
 
         NOTE:I have implemented only global search by phone (not name).
 

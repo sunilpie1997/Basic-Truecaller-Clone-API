@@ -1,5 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from search_user.models import PhoneDirectory
+from accounts.models import ContactList
 from django.contrib.auth import get_user_model
 
 User=get_user_model()
@@ -42,12 +43,20 @@ class RegisteredNumberByUnknown(ModelSerializer):
         model=PhoneDirectory
         fields=["phone","name_list","spam_score","user"]
 
-    
-class CompleteUserSerializer(ModelSerializer):
+
+class ContactListSerializer(ModelSerializer):
 
     class Meta:
+        model=ContactList
+        fields=["data"]
+
+
+class CompleteUserSerializer(ModelSerializer):
+
+    contact_list=ContactListSerializer()
+    class Meta:
         model=User
-        fields=["first_name","last_name","email"]
+        fields=["first_name","last_name","email","contact_list"]
     
 
 class PhoneDirectorySerializer(ModelSerializer):

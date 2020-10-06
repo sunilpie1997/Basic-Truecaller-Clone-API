@@ -103,7 +103,7 @@ def create_or_update_phone_directory(sender, instance, created, update_fields, *
     phoneObject,is_created=PhoneDirectory.objects.get_or_create(phone=instance.username)
     phoneObject.setUser(instance)
     list_of_names=phoneObject.getNameList()
-    list_of_names.update({instance.getFirstName():instance.getFirstName()})
+    list_of_names.update({instance.getFirstName():None})
 
     phoneObject.save()
 

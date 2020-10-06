@@ -9,9 +9,9 @@ User=get_user_model()
 class UserCreateSerializer(ModelSerializer):
     
     username = RegexField(regex=r'^[1-9][0-9]{9}$',required=True,validators=[UniqueValidator(queryset=User.objects.all(),message="Account with this contact no already exists")])
-    first_name = RegexField(required=True,regex=r'^\S{3,20}$')
-    last_name=RegexField(required=False,regex=r'^\S{3,20}$')
-    password=RegexField(required=True,regex=r'^\S{8,50}$',write_only=True)
+    first_name = RegexField(required=True,regex=r'^[a-zA-Z]{3,20}$')
+    last_name=RegexField(required=False,regex=r'^[a-zA-Z]{3,20}$')
+    password=CharField(required=True,write_only=True,max_length=50,min_length=8)
     email=EmailField(required=False,max_length=50)
 
     class Meta:
