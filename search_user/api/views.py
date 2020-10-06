@@ -137,11 +137,11 @@ class SearchUserByNameView(APIView):
                     name_list=each.get("name_list")
                     for name in name_list:
                         #if last_name is not None ,regex match using both names
-                        if last_name is not None and re.match('[a-zA-Z]*('+first_name+')\s*[a-zA-Z]*('+last_name+')[a-zA-Z]*',name) is not None:
+                        if last_name is not None and re.match('[a-zA-Z]*('+first_name+')\s*[a-zA-Z]*('+last_name+')[a-zA-Z]*',name,re.IGNORECASE) is not None:
                             li.append(name)
                         
                         #if last_name is None,regex match using only first_name
-                        elif re.match('[a-zA-Z]*('+first_name+')[a-zA-Z]*',name) is not None:
+                        elif re.match('[a-zA-Z]*('+first_name+')[a-zA-Z]*',name,re.IGNORECASE) is not None:
                             li.append(name)
                     #overwrite 'name_list' property
                     each["name_list"]=li.copy()
