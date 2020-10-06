@@ -1,11 +1,15 @@
     Caller project
 
-    ********** clean first_bame and alst_name to include only alpabets********8
 
 
-        NOTE:I have implemented only global search by phone (not name).
+        NOTE:I have implemented both global search by phone and name.
 
+        Global search by name does not have below facility:
 
+        **** Results should first show people whose names start with the search query, and then people whose names contain but don’t start with the search query. ****
+
+        Otherwise,everything is there.If user enters last_name as well,he/she can get better results
+         
 
         COMMANDS to add dummy_data
 

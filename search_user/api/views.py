@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from rest_framework import status
 import re
+from accounts.models import ContactList
 from .serializers import PhoneDirectorySerializer,UnknownNumberSerializer,RegisteredNumberSerializer,RegisteredNumberByUnknown#intentionally done
 
 User=get_user_model()
@@ -25,11 +26,21 @@ class AddToSpamView(APIView):
 
         else:
             if isPhoneNumberValid(phone):
-
-                obj,is_created=PhoneDirectory.objects.get_or_create(phone=phone)
-                obj.updateSpamScore()
-                obj.save()
-                return Response(status=status.HTTP_200_OK)
+                #'get()' will return only one row as it has OneToOne relation with 'User' model  
+                user_data=get_object_or_404(ContactList,user=request.user)
+                #is phone already in spam_list of user
+                if user_data.isPhoneInSpamList(phone):
+                    #if yes DON'T DO ANYTHING
+                    return Response(status=status.HTTP_200_OK)
+                
+                else:
+                    #update spam_score and also add this 'phone no' to spam_list of user
+                    obj,is_created=PhoneDirectory.objects.get_or_create(phone=phone)
+                    obj.updateSpamScore()
+                    obj.save()
+                    user_data.addPhoneToSpamList(phone)
+                    user_data.save()
+                    return Response(status=status.HTTP_200_OK)
 
             else:
 

@@ -65,11 +65,33 @@ class  User(AbstractUser):
 class ContactList(models.Model):
     user=models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name="contact_list",primary_key=True)
     data=models.JSONField(default=returnEmptyDict,blank=True)
-
+    spam_list=models.JSONField(default=returnEmptyDict,blank=True)
 
     #get contact_list of user
     def getContacts(self):
         return self.data
+
+
+    def getSpamList(self):
+        return self.spam_list
+
+
+    def isPhoneInSpamList(self, phone_no):
+    
+        spam_list=self.getSpamList()
+        if spam_list.get(phone_no,None) is None:
+            return False
+
+        else:
+            return True
+
+
+    def addPhoneToSpamList(self,phone_no):
+        if isPhoneNumberValid(phone_no):
+            spam_list=self.getSpamList()
+            spam_list.update({phone_no:None})
+        else:
+            raise ValueError('{name} should be of type {typeOf} {length} digits long'.format(name="Phone no",typeOf="string",length=10))
 
 
     #to check if given 'phone number' is in the contact list

@@ -19,7 +19,7 @@ def isNameValid(name):
         return False
 
 
-#for now,only Indian numbers are supported
+#for now,only Indian numbers are supported,this function is same as in 'accounts.models'.SO,edit both if you want to
 def isPhoneNumberValid(phone):
     if isinstance(phone,str) and len(phone)==10:
         result=re.search('^[1-9][0-9]{9}$',phone)
