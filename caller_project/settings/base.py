@@ -76,7 +76,7 @@ AUTH_USER_MODEL='accounts.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'caller_database',
+        'NAME':'caller_project',
         'USER':'sunilpie',
         'PASSWORD':'sunilpie',
         'HOST':'localhost'

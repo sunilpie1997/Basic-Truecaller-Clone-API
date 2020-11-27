@@ -38,7 +38,7 @@ def returnEmptyDict():
 
 class PhoneDirectory(models.Model):
     
-    phone=models.CharField(max_length=20,validators=[isPhoneNumberValid],null=False,blank=False,unique=True,db_index=True)
+    phone=models.CharField(max_length=20,validators=[RegexValidator(regex='^[1-9][0-9]{9}$',message='Phone no must be of 10 digits starting from [1-9]')],null=False,blank=False,unique=True,db_index=True)
     spam_score=models.BigIntegerField(default=0)
     name_list=models.JSONField(default=returnEmptyDict,blank=True)
     user=models.ForeignKey(settings.AUTH_USER_MODEL,null=True,blank=True,on_delete=models.SET_NULL,related_name="directory")

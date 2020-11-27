@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.conf import settings
+from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 from search_user.models import PhoneDirectory
@@ -9,6 +11,7 @@ import re
 
 #for now,only Indian numbers are supported
 def isPhoneNumberValid(phone):
+    
     if isinstance(phone,str) and len(phone)==10:
         result=re.search('^[1-9][0-9]{9}$',phone)
         if result is None:
@@ -28,14 +31,14 @@ def validateNameLength(value):
     if len(value)<=100:
         return True
     else:
-        return False
+        return ValidationError('name should be less than 100 chars')
 
     
 
 #custom user model
 class  User(AbstractUser):
     
-    username=models.CharField(max_length=20,null=False,validators=[isPhoneNumberValid],blank=False,unique=True,db_index=True)
+    username=models.CharField(max_length=20,null=False,validators=[RegexValidator(regex='^[1-9][0-9]{9}$',message='Phone no must be of 10 digits starting from [1-9]')],blank=False,unique=True,db_index=True)
     email=models.EmailField(max_length=100,blank=True,null=True)
     first_name=models.CharField(max_length=100,blank=False,null=False)
     last_name=models.CharField(max_length=100,default="",blank=True)
