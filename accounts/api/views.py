@@ -23,7 +23,8 @@ class UserRetrieveAPIView(RetrieveAPIView):
     permission_classes=[IsAuthenticated]
     
     def get_object(self):
-    
+        
+        #overriding get_object() method to retrive user
         queryset = self.filter_queryset(self.get_queryset())
         obj = get_object_or_404(queryset,id=self.request.user.id)
         return obj

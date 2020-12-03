@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+    <h1 class="navlink" style="text-align: center;">Welcome to Truecaller Clone API </h1>
+
+
+    <h1 class="navlink" style="text-align: center;"> I have implemented both global search by phone and name !!!</h1>
+    
+            
+            <h1 class="navlink" style="text-align: center;">INSTRUCTIONS to run</h1>
+
+            <ul class="navlink" style="text-align: center;">
+            
+                <li>download all requirements listed in requirements.txt </li><br>
+                <li>install postgres database if not installed</li><br>
+                <li>create a database and edit the 'DATABASE' property in 'settings.base.py'</li><br>
+                <li>python manage.py makemigrations</li> <br>
+                <li>python manage.py migrate</li> <br>
+                <li>python manage.py runserver</li><br>
+
+                <li>Create dummy users and multiple contacts as mentioned below</li> <br>
+                <li>Go to 'api_usage' folder and follow instructions to use API</li><br>
+            
+            </ul>
+
+            <h1 class="navlink"  style="text-align: center;">Custom Commands to add dummy_data</h1>
+
+                <ul class="navlink" style="text-align: center;">
+    
+                    <li>Add dummy user <br>
+    
+                        python manage.py dummy_user 'username' 'name' 'password' 'email' <br>
+    
+                        ex:python manage.py dummy_user "9995477921" "sunil23" "sunil1234" "sunilpie@sunil.com" <br>
+                
+                    </li><br>
+                
+                    <li> Add multiple dummy phone_numbers to phone directory at once <br>
+    
+                        python manage.py dummy_contacts 'contacts' <br>
+    
+                        ex:python manage.py dummy_contacts "2222222222" "3333333333" "4444444444" "5555555555" <br>
+    
+                    </li> <br>
+    
+                    <li>Adds multiple phone no's to spam.If phone no exists,increase spam score<br> 
+    
+                        python manage.py add_to_spam 'contacts' <br>
+    
+                        python manage.py add_to_spam "4444444444" "5555555555" <br>
+    
+                    </li><br>
+    
+                </ul>
+
+        
+{% endblock %}

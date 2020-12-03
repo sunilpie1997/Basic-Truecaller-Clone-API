@@ -3,7 +3,7 @@ from accounts.models import User
 
 
 """
-all the arguements listed below need to be provided to create user
+all the arguements listed below need to be provided to create dummy user
 
 """
 class Command(BaseCommand):

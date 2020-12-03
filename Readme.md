@@ -3,14 +3,22 @@
 
 
         NOTE:I have implemented both global search by phone and name.
-
-        Global search by name does not have below facility:
-
-        **** Results should first show people whose names start with the search query, and then people whose names contain but don’t start with the search query. ****
-
-        Otherwise,everything is there.If user enters last_name as well,he/she can get better results
          
+        INSTRUCTIONS to run:
 
+
+        1.download all requirements listed in requirements.txt
+        2.install postgres database if not installed
+        3.create a database and edit the 'DATABASE' property in 'settings.base.py'
+        4.python manage.py makemigrations
+        5.python manage.py migrate
+        6.python manage.py runserver
+
+        7.Create dummy users and multiple contacts as mentioned above
+        8.Go to 'api_usage' folder and follow instructions to use API
+
+*******************************************************************************************************************        
+      
         COMMANDS to add dummy_data
 
             1.Add dummy user
@@ -34,12 +42,4 @@
             python manage.py add_to_spam "4444444444" "5555555555"
 
     
-    INSTRUCTIONS to run:
-
-
-        1.download all requirements listed in requirements.txt
-        2.install postgres database if not installed
-        3.create a database and edit the 'DATABASE' property in 'settings.base.py'
-        4.python manage.py makemigrations
-        5.python manage.py migrate
-        6.python manage.py runserver
+********************************************************************************************************************
